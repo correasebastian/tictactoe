@@ -20,6 +20,14 @@
             <p>Secondary text</p>
           </div>
         </md-list-item>
+
+        <md-list-item class="md-2-line" ng-repeat="person in main.waitList">
+          <img ng-src="{{person.party.src}}" class="md-avatar" alt="imgh" />
+          <div class="md-list-item-text">
+            <h3>{{person.name}}</h3>
+            <p scm-time-ago unixms="{{person.timestamp}}">{{person.timestamp}}</p>
+          </div>
+        </md-list-item>
       </md-list>
     </md-content>
     1</div>

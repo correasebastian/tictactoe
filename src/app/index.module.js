@@ -4,7 +4,7 @@
   angular
     .module('tictactoe',
     ['ngAnimate',
-      'ngTouch',
+      // 'ngTouch',//angular material include one touch module
       'ngSanitize',
       'ngMessages',
       'ngAria',
@@ -13,7 +13,8 @@
       'toastr',
       'player',
       //firebase
-      'fb'
+      'fb',
+      'util'    
     ]);
 
 })();

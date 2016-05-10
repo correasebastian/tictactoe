@@ -18,7 +18,7 @@
     </div>
 </md-dialog-content>
 <md-dialog-actions layout="row" ng-show="vm.name">
-
+<span>pick your party:</span>
     <span flex></span>
     <!--<md-button ng-click="vm.createUser('R')" class="md-icon-button md-img-btn">
             <img class="md-avatar" src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Republican_Disc.png" alt="imghh2" />
@@ -28,7 +28,7 @@
                 alt="imgh1" />
 
         </md-button>-->
-    <md-button ng-repeat="party in vm.parties" ng-click="vm.createUser(party.$id)" class="md-icon-button md-img-btn">
+    <md-button ng-repeat="party in vm.parties" ng-click="vm.createUser(party)" class="md-icon-button md-img-btn">
         <img class="md-avatar" ng-src="{{party.src}}" alt="imghh2" />
     </md-button>
 
