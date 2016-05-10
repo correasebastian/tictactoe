@@ -45,7 +45,7 @@
     function newPlayer(ev) {
 
       $mdDialog.show({
-        templateUrl: 'app/main/new-player-dialog.html',
+        templateUrl: 'app/newplayer/new-player-dialog.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose: true,
