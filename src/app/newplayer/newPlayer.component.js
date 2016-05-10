@@ -35,9 +35,10 @@
         }
 
         function createUser(party) {
+            var _waitRef;
             var user = {
                 name: vm.name,
-                timestamp : Firebase.ServerValue.TIMESTAMP,
+                timestamp: Firebase.ServerValue.TIMESTAMP,
                 party: {
                     name: party.name,
                     src: party.src,
@@ -46,13 +47,23 @@
             }
             rootRef.child('users').push(user)
                 .then(onInserted)
-                .then($mdDialog.hide)
+                .then(onInsertWaitList)
 
             function onInserted(res) {
                 console.log(res)
                 user.match = false;
-                return rootRef.child('wait').child(res.key()).set(user)
+                _waitRef = rootRef.child('wait').child(res.key())
 
+                return _waitRef.set(user);
+
+
+            }
+
+            function onInsertWaitList() {
+                console.log(_waitRef)
+                debugger
+                _waitRef.onDisconnect().remove();
+                $mdDialog.hide()
             }
 
         }

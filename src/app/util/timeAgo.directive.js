@@ -26,6 +26,7 @@
         function link(scope, element, attrs, ctrl) {
 
             if (attrs.unixms) {
+                element.css({ 'font-size': 'x-small' })
                 setTimeAgoElement();
                 var promiseInterval = $interval(setTimeAgoElement, 5000, 0, true);
 
