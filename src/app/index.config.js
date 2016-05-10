@@ -13,7 +13,7 @@
     //material config 
        $mdThemingProvider.theme('default')
             .primaryPalette('red')
-            .accentPalette('orange');
+            .accentPalette('blue');
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;

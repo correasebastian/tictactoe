@@ -11,7 +11,9 @@
       'ui.router',
       'ngMaterial',
       'toastr',
-      'player'
+      'player',
+      //firebase
+      'fb'
     ]);
 
 })();
