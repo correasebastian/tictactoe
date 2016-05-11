@@ -1,0 +1,17 @@
+<md-toolbar class="md-accent">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">Waiting List</h2>
+    </div>
+</md-toolbar>
+<md-content>
+    <md-list>
+
+        <md-list-item class="md-2-line" ng-repeat="person in vm.people">
+            <img ng-src="{{person.party.src}}" class="md-avatar" alt="imgh" />
+            <div class="md-list-item-text">
+                <h3>{{person.name}}</h3>
+                <p scm-time-ago unixms="{{person.timestamp}}">{{person.timestamp}}</p>
+            </div>
+        </md-list-item>
+    </md-list>
+</md-content>

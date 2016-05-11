@@ -15,7 +15,8 @@
       //firebase
       'fb',
       'util',
-      'app.home'    
+      'app.home',
+      'waitListModule'    
     ]);
 
 })();

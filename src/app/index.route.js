@@ -18,7 +18,12 @@
           'waitList': ['WaitingListFactory',
             function (WaitingListFactory) {
               return WaitingListFactory.getWaitingList().$loaded();
+            }],
+          'usersList': ['UsersFactory',
+            function (UsersFactory) {
+              return UsersFactory.getUsers().$loaded();
             }]
+
         }
       });
 
