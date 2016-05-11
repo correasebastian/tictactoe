@@ -1,0 +1,29 @@
+<!--<md-button ng-hide="vm.show" ng-click="vm.showForm()" class="md-raised md-primary">
+    NEW PLAYER
+</md-button>-->
+<md-card  ng-hide="vm.userCreated">
+    <!--ng-show="vm.show"-->
+    <md-card-content>
+        <md-toolbar class="md-accent">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Enter your Name and pick your party</h2>
+            </div>
+        </md-toolbar>
+        <!--<h2 class="md-primary">Enter your Name and pick your party</h2>-->
+        <br>
+        <div class="md-dialog-content">
+            <md-input-container class="md-icon-float md-block">
+                <label>Name</label>
+                <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+                <input ng-model="vm.name" type="text">
+            </md-input-container>
+        </div>
+    </md-card-content>
+    <md-card-footer layout="row">
+        <span flex></span>
+        <md-button ng-repeat="party in vm.parties" ng-click="vm.createUser(party)" class="md-icon-button md-raised md-img-btn">
+            <img class="md-avatar" ng-src="{{party.src}}" alt="imghh2" />
+        </md-button>
+
+    </md-card-footer>
+</md-card>

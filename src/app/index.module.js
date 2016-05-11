@@ -16,6 +16,7 @@
       'fb',
       'util',
       'app.home',
+      'app.play',
       'waitListModule'    
     ]);
 

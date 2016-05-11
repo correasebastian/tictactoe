@@ -39,6 +39,18 @@
         }
       });
 
+    $stateProvider
+      .state('app.play', {
+        url: '/play',
+        views: {
+          'content@app': {
+            templateUrl: 'app/play/play.html',
+            controller: 'PlayController',
+            controllerAs: 'vm'
+          }
+        }
+      });
+
 
 
 
