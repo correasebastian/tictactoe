@@ -30,13 +30,16 @@
         </md-list-item>
       </md-list>
     </md-content>
-    </div>
+  </div>
   <div flex class="md-whiteframe-1dp padding">
 
     <md-button ng-hide="main.hideNewplayer()" ng-click="main.newPlayer()" class="md-raised md-primary">
       NEW PLAYER
     </md-button>
     <h4 ng-show="main.hideNewplayer()">you are on the waiting list , be patient, some conter party is coming</h4>
+
+    <md-content id="content" class="animate-slide-up md-background md-hue-1" ui-view="content" flex></md-content>
+
   </div>
   <div flex="30" class="md-whiteframe-1dp">
     <md-toolbar class="md-accent">

@@ -53,6 +53,7 @@
 
             function onInserted(res) {
                 debugger
+                var insertedKey = res.key();
                 var _waitRef;
                 UserService.setUser();
                 var first = WaitingListFactory.getFirst()
@@ -65,7 +66,26 @@
                     _waitRef.set(user);
 
                 } else {
-                    WaitingListFactory.removeFirst()
+
+                    WaitingListFactory.removeFirst();
+
+
+                    // Generate a new push ID for the new post
+                    var newGameRef = rootRef.child("games").push();
+                    var newGameKey = newGameRef.key();
+
+                    // Create the data we want to update
+                    var updatedUserData = {};
+                    updatedUserData['users/' + first.$id + '/activeGame'] = newGameKey;
+                    updatedUserData['users/' + insertedKey + '/activeGame'] = newGameKey;
+                    updatedUserData['games/' + newGameKey ] = {user1:{name:first.name}, user2: {name:user.name}};
+
+                    // Do a deep-path update
+                    rootRef.update(updatedUserData, function (error) {
+                        if (error) {
+                            console.log("Error updating data:", error);
+                        }
+                    });
                 }
 
                 $mdDialog.hide()
@@ -79,6 +99,8 @@
                 _waitRef.onDisconnect().remove();
 
             }
+
+
 
         }
 

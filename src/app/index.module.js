@@ -14,7 +14,8 @@
       'player',
       //firebase
       'fb',
-      'util'    
+      'util',
+      'app.home'    
     ]);
 
 })();

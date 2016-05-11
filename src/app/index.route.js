@@ -8,25 +8,40 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('home', {
+      .state('app', {
         url: '/',
+        abstract: true,
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',
-        resolve:
-        {
-          waitList: ['WaitingListFactory',
+        resolve: {
+          'waitList': ['WaitingListFactory',
             function (WaitingListFactory) {
               return WaitingListFactory.getWaitingList().$loaded();
             }]
         }
       });
 
+    $stateProvider
+      .state('app.home', {
+        url: '/home',
+        views: {
+          'content@app': {
+            templateUrl: 'app/home/home.html',
+            controller: 'HomeController',
+            controllerAs: 'vm'
+          }
+        }
+      });
+
+
+
+
     // $urlRouterProvider.otherwise('/');
     $urlRouterProvider.otherwise(function ($injector) {
       var $state = $injector.get("$state");
 
-      $state.go('home');
+      $state.go('app.home');
 
 
     });
