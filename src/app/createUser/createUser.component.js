@@ -127,10 +127,7 @@
                 // $state.go('app.play', params)
             }
 
-            function onInsertedWaitList() {
-                $state.go('app.play', params)
-            }
-
+           
         }
     }
 })();
