@@ -6,22 +6,25 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, WaitingListFactory, $mdDialog) {
+  function MainController(waitList, $timeout, webDevTec, toastr, WaitingListFactory, $mdDialog, UserService) {
     var vm = this;
-
+    debugger
     vm.awesomeThings = [];
     vm.classAnimation = '';
-    vm.waitList = [];
+    // vm.waitList = [];
+    vm.waitList = waitList;
+
     vm.creationDate = 1462835911886;
     vm.showToastr = showToastr;
     vm.onSwipeRight = onSwipeRight;
     vm.newPlayer = newPlayer;
+    vm.hideNewplayer=UserService.getUser
 
     activate();
 
     function activate() {
       getWebDevTec();
-      getWaitList()
+      // getWaitList()
       $timeout(function () {
         vm.classAnimation = 'rubberBand';
       }, 4000);

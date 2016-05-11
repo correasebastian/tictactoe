@@ -10,16 +10,16 @@
     </md-toolbar>
     <md-content>
       <md-list>
-        <md-subheader class="md-no-sticky">2 line item</md-subheader>
+        <!--<md-subheader class="md-no-sticky">2 line item</md-subheader>-->
         <!--{{vm | json}}-->
-        <md-list-item class="md-2-line">
+        <!--<md-list-item class="md-2-line">
           <img src="http://static.wixstatic.com/media/adfd82_d0abb0a8dc6948499c46d114dcea8138.png_srz_292_230_85_22_0.50_1.20_0.00_png_srz"
             class="md-avatar" alt="imgh" />
           <div class="md-list-item-text">
             <h3>sebas</h3>
             <p>Secondary text</p>
           </div>
-        </md-list-item>
+        </md-list-item>-->
 
         <md-list-item class="md-2-line" ng-repeat="person in main.waitList">
           <img ng-src="{{person.party.src}}" class="md-avatar" alt="imgh" />
@@ -30,12 +30,13 @@
         </md-list-item>
       </md-list>
     </md-content>
-    1</div>
+    </div>
   <div flex class="md-whiteframe-1dp padding">
 
-    <md-button ng-click="main.newPlayer()" class="md-raised md-primary">
+    <md-button ng-hide="main.hideNewplayer()" ng-click="main.newPlayer()" class="md-raised md-primary">
       NEW PLAYER
     </md-button>
+    <h4 ng-show="main.hideNewplayer()">you are on the waiting list , be patient, some conter party is coming</h4>
   </div>
   <div flex="30" class="md-whiteframe-1dp">
     <md-toolbar class="md-accent">

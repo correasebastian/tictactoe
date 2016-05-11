@@ -12,9 +12,10 @@
         });
 
 
-    NewPlayer.$inject = ['rootRef', 'PartiesFactory', '$mdDialog', 'Firebase'];
-    function NewPlayer(rootRef, PartiesFactory, $mdDialog, Firebase) {
+    NewPlayer.$inject = ['rootRef', 'PartiesFactory', '$mdDialog', 'Firebase', 'WaitingListFactory', 'UserService'];
+    function NewPlayer(rootRef, PartiesFactory, $mdDialog, Firebase, WaitingListFactory, UserService) {
         var vm = this;
+        debugger
         vm.name = '';
         vm.createUser = createUser;
 
@@ -35,7 +36,7 @@
         }
 
         function createUser(party) {
-            var _waitRef;
+
             var user = {
                 name: vm.name,
                 timestamp: Firebase.ServerValue.TIMESTAMP,
@@ -47,15 +48,28 @@
             }
             rootRef.child('users').push(user)
                 .then(onInserted)
-                .then(onInsertWaitList)
+            // .finally($mdDialog.hide)
+            // .then(onInsertWaitList)
 
             function onInserted(res) {
-                console.log(res)
-                user.match = false;
-                _waitRef = rootRef.child('wait').child(res.key())
+                debugger
+                var _waitRef;
+                UserService.setUser();
+                var first = WaitingListFactory.getFirst()
+                if (!first || first.party.id === party.$id) {
+                    console.log(res)
+                    user.match = false;
+                    _waitRef = rootRef.child('wait').child(res.key())
 
-                return _waitRef.set(user);
+                    _waitRef.onDisconnect().remove();
+                    _waitRef.set(user);
 
+                } else {
+                    WaitingListFactory.removeFirst()
+                }
+
+                $mdDialog.hide()
+                // $mdDialog.hide()
 
             }
 
@@ -63,7 +77,7 @@
                 console.log(_waitRef)
                 debugger
                 _waitRef.onDisconnect().remove();
-                $mdDialog.hide()
+
             }
 
         }
