@@ -6,7 +6,7 @@
         .component('waitList', {
             templateUrl: "app/waitList/waitList.component.html",
             bindings: {
-                people: "<",
+                peopleWaiting: "<",
                 // max: "<",
                 // setRating: "&"
             },

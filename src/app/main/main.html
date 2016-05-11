@@ -4,7 +4,7 @@
 <md-content layout="row" layout-fill layout-padding>
 
   <!--waiting-list component-->
-  <wait-list people="main.waitList" flex="20" class="md-whiteframe-1dp">
+  <wait-list people-waiting="main.waitList" flex="20" class="md-whiteframe-1dp">
   </wait-list>
   <!--<div flex="20" class="md-whiteframe-1dp">
     <md-toolbar class="md-accent">
@@ -28,7 +28,7 @@
 
   <div class="md-whiteframe-1dp padding" flex>
     <!--create user component-->
-    <create-user users="main.usersList">
+    <create-user users="main.usersList" people-waiting="main.waitList" games="main.gamesList">
     </create-user>
     <md-content id="content" class="animate-slide-up md-background md-hue-1" 
     ui-view="content" flex>

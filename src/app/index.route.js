@@ -10,7 +10,7 @@
     $stateProvider
       .state('app', {
         url: '/',
-        abstract: true,
+        // abstract: true,
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main',
@@ -23,25 +23,32 @@
             function (UsersFactory) {
               return UsersFactory.getUsers().$loaded();
             }]
+            ,
+          'gamesList': ['GamesFactory',
+            function (GamesFactory) {
+              return GamesFactory.getGames().$loaded();
+            }]
 
         }
       });
 
-    $stateProvider
-      .state('app.home', {
-        url: '/home',
-        views: {
-          'content@app': {
-            templateUrl: 'app/home/home.html',
-            controller: 'HomeController',
-            controllerAs: 'vm'
-          }
-        }
-      });
+    // $stateProvider
+    //   .state('app.home', {
+    //     url: '/home',
+    //     views: {
+    //       'content@app': {
+    //         templateUrl: 'app/home/home.html',
+    //         controller: 'HomeController',
+    //         controllerAs: 'vm'
+    //       }
+    //     }
+    //   });
 
     $stateProvider
       .state('app.play', {
-        url: '/play',
+        // url: '/play/:key/:counterKey',
+        url: '/play/:gameKey',
+        
         views: {
           'content@app': {
             templateUrl: 'app/play/play.html',
@@ -58,7 +65,7 @@
     $urlRouterProvider.otherwise(function ($injector) {
       var $state = $injector.get("$state");
 
-      $state.go('app.home');
+      $state.go('app');
 
 
     });

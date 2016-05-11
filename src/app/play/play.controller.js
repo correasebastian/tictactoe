@@ -5,9 +5,10 @@
         .module('app.play')
         .controller('PlayController', PlayController);
 
-    PlayController.$inject = [''];
-    function PlayController() {
+    PlayController.$inject = ['$stateParams'];
+    function PlayController($stateParams) {
         var vm = this;
+        console.log($stateParams, 'stateparams')
         
 
         activate();
